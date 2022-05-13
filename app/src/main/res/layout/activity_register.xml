@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ScrollViewSize">
+
+        <TextView
+            android:id="@+id/textRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageViewRegister"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/acc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textRegister"
+            tools:ignore="ContentDescription,MissingConstraints" />
+
+        <EditText
+            android:id="@+id/masukan_username_Register"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/custom_draw"
+            android:hint="Masukan Username"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewRegister"
+            tools:ignore="Autofill,LabelFor,MissingConstraints,RtlSymmetry,TextFields" />
+
+        <EditText
+            android:id="@+id/masukan_email_Register"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/custom_draw"
+            android:hint="Masukan Email"
+            android:textColorHint="@color/black"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/masukan_username_Register"
+            tools:ignore="Autofill,LabelFor,MissingConstraints,RtlSymmetry,TextFields" />
+
+        <EditText
+            android:id="@+id/masukan_password_Register"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/custom_draw"
+            android:hint="Masukan Password"
+            android:textColorHint="@color/black"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/masukan_email_Register"
+            tools:ignore="Autofill,LabelFor,MissingConstraints,RtlSymmetry,TextFields" />
+
+        <EditText
+            android:id="@+id/masukan_konfpassword_Register"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/custom_draw"
+            android:hint="Masukan Konfirmasi Password"
+            android:textColorHint="@color/black"
+            android:inputType="textPassword"
+            android:paddingStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/masukan_password_Register"
+            tools:ignore="Autofill,LabelFor,MissingConstraints,RtlSymmetry,TextFields" />
+
+        <Button
+            android:id="@+id/btn_Register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#FD504141"
+            android:text="Daftar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/masukan_email_Register"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/sudah_punya_akun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sudah Punya Akun ? Login Disini"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_Register"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
