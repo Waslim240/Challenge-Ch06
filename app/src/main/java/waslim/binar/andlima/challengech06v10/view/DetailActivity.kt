@@ -80,6 +80,7 @@ class DetailActivity : AppCompatActivity() {
                     }
                 }
             }
+
         }
     }
 

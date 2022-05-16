@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.map
 class DataUserManager (context: Context) {
 
     private val dataStore : DataStore<Preferences> = context.createDataStore(name = "data_user")
+    private val dataImage : DataStore<Preferences> = context.createDataStore(name = "data_image")
 
     companion object {
         val ID = preferencesKey<String>("ID")
@@ -19,10 +20,11 @@ class DataUserManager (context: Context) {
         val DATEOFBIRTH = preferencesKey<String>("DATEOFBIRTH")
         val ADDRESS = preferencesKey<String>("ADDRESS")
         val IMAGE = preferencesKey<String>("IMAGE")
+        val URLIMAGE = preferencesKey<String>("URLIMAGE")
         val BOOLEAN = preferencesKey<Boolean>("BOOLEAN")
     }
 
-    suspend fun saveData(id : String, username : String, email : String, password : String, fullName : String, dateOfbirth : String, address : String, image : String){
+    suspend fun saveData(id : String, username : String, email : String, password : String, fullName : String, dateOfbirth : String, address : String, urlImage : String){
         dataStore.edit {
             it[ID] = id
             it[USERNAME] = username
@@ -31,6 +33,12 @@ class DataUserManager (context: Context) {
             it[FULLNAME] = fullName
             it[DATEOFBIRTH] = dateOfbirth
             it[ADDRESS] = address
+            it[URLIMAGE] = urlImage
+        }
+    }
+
+    suspend fun saveImage(image: String) {
+        dataImage.edit {
             it[IMAGE] = image
         }
     }
@@ -43,6 +51,10 @@ class DataUserManager (context: Context) {
 
     suspend fun logout(){
         dataStore.edit {
+            it.clear()
+        }
+
+        dataImage.edit {
             it.clear()
         }
     }
@@ -76,7 +88,11 @@ class DataUserManager (context: Context) {
         it[ADDRESS] ?: ""
     }
 
-    val image : Flow<String> = dataStore.data.map {
+    val urlImage : Flow<String> = dataStore.data.map {
+        it[URLIMAGE] ?: ""
+    }
+
+    val images : Flow<String> = dataImage.data.map {
         it[IMAGE] ?: ""
     }
 

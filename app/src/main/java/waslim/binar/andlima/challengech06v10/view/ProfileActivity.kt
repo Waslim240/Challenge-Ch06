@@ -14,7 +14,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import waslim.binar.andlima.challengech06v10.R
 import waslim.binar.andlima.challengech06v10.datastore.DataUserManager
-import waslim.binar.andlima.challengech06v10.model.datauser.DataUserResponseItem
 import waslim.binar.andlima.challengech06v10.viewmodel.ViewModelUser
 
 class ProfileActivity : AppCompatActivity() {
@@ -31,6 +30,7 @@ class ProfileActivity : AppCompatActivity() {
         updateDataUser()
         logout()
         backHome()
+        selectImage()
 
 
     }
@@ -38,11 +38,11 @@ class ProfileActivity : AppCompatActivity() {
 
 // ===================================== GET DATA STORE ===========================================//
     private fun getDataStore(){
-        dataUserManager.image.asLiveData().observe(this){
-            Glide.with(imageViewProfile.context).load(it).into(imageViewProfile)
+        dataUserManager.images.asLiveData().observe(this){
+            Glide.with(this).load(it).into(imageViewProfile)
         }
 
-        dataUserManager.image.asLiveData().observe(this){
+        dataUserManager.urlImage.asLiveData().observe(this){
             masukan_url_image.setText(it)
         }
 
@@ -60,6 +60,31 @@ class ProfileActivity : AppCompatActivity() {
 
         dataUserManager.address.asLiveData().observe(this){
             alamat.setText(it)
+        }
+    }
+
+
+// ===================================== SELECT IMAGE =============================================//
+    private fun selectImage(){
+        imageViewProfile.setOnClickListener {
+            pichImageGalery()
+        }
+    }
+
+    private fun pichImageGalery(){
+        val inten = Intent(Intent.ACTION_PICK)
+        inten.type = "image/*"
+        startActivityForResult(inten, 2000)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 2000 && resultCode == RESULT_OK){
+            imageViewProfile.setImageURI(data?.data)
+            GlobalScope.launch {
+                dataUserManager.saveImage(data?.data.toString())
+            }
+
         }
     }
 
@@ -96,12 +121,12 @@ class ProfileActivity : AppCompatActivity() {
                 viewModel.makeApiUpdate(id, address, dateOfBirth, fullName, image, username)
             }
 
-            .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, i: Int ->
+            .setNegativeButton("TIDAK"){ dialogInterface: DialogInterface, i: Int ->
                 Toast.makeText(this, "Tidak Jadi Di Update", Toast.LENGTH_SHORT).show()
                 dialogInterface.dismiss()
             }
 
-            .setNeutralButton("Nanti"){ dialogInterface: DialogInterface, i: Int ->
+            .setNeutralButton("NANTI"){ dialogInterface: DialogInterface, i: Int ->
                 Toast.makeText(this, "Jangan Lama Mikirnya", Toast.LENGTH_SHORT).show()
                 dialogInterface.dismiss()
             }
@@ -128,9 +153,15 @@ class ProfileActivity : AppCompatActivity() {
                     Toast.makeText(this, "Tidak Jadi Logout", Toast.LENGTH_SHORT).show()
                     dialogInterface.dismiss()
                 }
+
+                .setNeutralButton("NANTI"){ dialogInterface: DialogInterface, i: Int ->
+                    dialogInterface.dismiss()
+                    Toast.makeText(this, "Jangan Lama Mikirnya", Toast.LENGTH_SHORT).show()
+                }
                 .show()
         }
     }
+
 
 // ========================================= HOME =================================================//
     private fun backHome(){
@@ -140,3 +171,4 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 }
+

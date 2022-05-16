@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Challenge Ch06 v1.0</string>
+    <string name="detail">Detail</string>
+    <string name="favorite">Favorite</string>
+    <string name="home">Home</string>
+    <string name="login">Login</string>
+    <string name="masukan_email">Masukan Email</string>
+    <string name="masukan_password">Masukan Password</string>
+    <string name="belum_punya_akun_daftar_disini">Belum Punya Akun ? Daftar Disini</string>
+    <string name="profile">Profile</string>
+    <string name="url_image">Url Image</string>
+    <string name="username">Username</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="alamat">Alamat</string>
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="masukan_username">Masukan Username</string>
+    <string name="masukan_konfirmasi_password">Masukan Konfirmasi Password</string>
+    <string name="daftar">Daftar</string>
+    <string name="sudah_punya_akun_login_disini">Sudah Punya Akun ? Login Disini</string>
 </resources>

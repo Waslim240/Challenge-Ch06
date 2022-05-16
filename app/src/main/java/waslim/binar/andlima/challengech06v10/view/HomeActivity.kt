@@ -5,10 +5,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.net.toUri
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import waslim.binar.andlima.challengech06v10.R
@@ -31,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         getDataStore()
     }
 
-// ===================================== GET DATA USERNAME ========================================//
+// ===================================== GET DATA STORE ===========================================//
     @SuppressLint("SetTextI18n")
     private fun getDataStore(){
         dataUserManager = DataUserManager(this)
@@ -39,6 +41,7 @@ class HomeActivity : AppCompatActivity() {
         dataUserManager.username.asLiveData().observe(this){
             welcome_username.text = "Welcome, $it"
         }
+
     }
 
 

@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_favorite.*
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -30,6 +32,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         getDataStore()
         goToHome()
+        goProfile()
         init()
         get()
 
@@ -44,6 +47,7 @@ class FavoriteActivity : AppCompatActivity() {
         dataUserManager.username.asLiveData().observe(this){
             welcome_usernamefav.text = "Welcome, $it"
         }
+
     }
 
 
@@ -51,12 +55,12 @@ class FavoriteActivity : AppCompatActivity() {
     private fun init(){
         GlobalScope.async {
             filmFav = dB?.filmDao()?.getFilmId(filmFav!!.id!!.toInt())
-            dB?.filmDao()?.getAllFilm()
         }
     }
 
     private fun get(){
-        rvFilm_favorite.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rvFilm_favorite.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,
+            false)
         GlobalScope.launch {
             val listdata = dB?.filmDao()?.getAllFilm()
             runOnUiThread {
@@ -78,6 +82,15 @@ class FavoriteActivity : AppCompatActivity() {
     private fun goToHome(){
         imageHome.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
+    }
+
+
+//====================================== GO TO PROFILE =============================================//
+    private fun goProfile(){
+        accountFavorite.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
             finish()
         }
     }

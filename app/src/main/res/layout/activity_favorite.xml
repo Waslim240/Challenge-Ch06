@@ -11,7 +11,6 @@
         android:id="@+id/welcome_usernamefav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, Username !"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
         android:textColor="@color/black"
@@ -21,13 +20,24 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageHome"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/home"
+        app:layout_constraintEnd_toStartOf="@+id/accountFavorite"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,MissingConstraints" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/accountFavorite"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/ic_baseline_home_24"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/akun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription,MissingConstraints" />
@@ -38,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
-        android:text="Favorite"
+        android:text="@string/favorite"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
